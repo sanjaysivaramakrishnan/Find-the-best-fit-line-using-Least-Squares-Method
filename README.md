@@ -23,33 +23,44 @@ Program to implement univariate Linear Regression to fit a straight line using l
 Developed by: Sanjay sivaramakrishnan M
 RegisterNumber:  212223240151
 
-import numpy as np
+import numpy as np 
 import matplotlib.pyplot as plt
-x = np.array([1,2,3,4,5,6,7,8,9,10])
-y = np.array([11,12,13,14,15,16,17,18,19,20])
-xmean = np.mean(x)
-ymean = np.mean(y)
-num = 0
-den = 0 
-for i in range(len(x)):
-    num+=(x[i]-xmean)*(y[i]-ymean)
-    den+=(x[i]-xmean)**2
-m = num/den
-b = ymean-m*(xmean)
-ypredicted = m*x-b
-print("X-Vales: ",x)
-print("y-Vales: ",y)
-print("slope: ",m,", Intercept: ",b)
-print("Y  predicted values: ",ypredicted)
-plt.scatter(x,y)
-plt.plot(x,ypredicted,color="green")
-plt.show()
+#Input array -X and Y
+X = np.array(eval(input()))
+y = np.array(eval(input()))
+print(X)
+print(y)
+# Mean Extraction
+x_mean = np.mean(X)
+y_mean = np.mean(y)
+print(x_mean)
+print(y_mean)
+# num, denom = 0,0
+#                                                  # using Normal python
+# for i in range(len(X)):
+#     num+= ((X[i]-x_mean) * (y[i] - y_mean))
+#     denom += (X[i] - x_mean) **2
+# m = num/denom
+# b = y_mean - m*x_mean    
+# print(m)
+# print(b)
+m = np.sum((X-x_mean)*(y-y_mean))/np.sum((X-x_mean)**2)
+print(m)
+b = y_mean - m*x_mean
+print(b)
+y_predicted = m*X + b
+### Ploting
+plt.scatter(X,y,color='#1df50a')
+plt.xlabel('X Value')
+plt.ylabel('Y Predicted')
+_=plt.plot(X,y_predicted,color='#f24724')
+y  = m*10 +b
+print(y)
 */
 ```
 
 ## Output:
-![Screenshot 2024-02-24 091015](https://github.com/sanjaysivaramakrishnan/Find-the-best-fit-line-using-Least-Squares-Method/assets/151629616/095a9571-a2c0-4886-aab1-66fce75183d8)
-
+![image](https://github.com/user-attachments/assets/f3e23240-d155-44ff-83a9-989c535993f4)
 
 
 ## Result:
